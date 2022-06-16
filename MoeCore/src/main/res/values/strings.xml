@@ -1,0 +1,24 @@
+<resources>
+    <string name="brvah_app_name">Library</string>
+    <string name="brvah_loading">正在加载中...</string>
+    <string name="brvah_load_failed">加载失败，请点我重试</string>
+    <string name="brvah_load_end">没有更多数据</string>
+
+
+<!--    <plurals name="error_over_count">-->
+<!--        <item quantity="one">Можно выбрать не более %1$d файла</item>-->
+<!--        <item quantity="few">Можно выбрать не более %1$d файлов</item>-->
+<!--        <item quantity="many">Можно выбрать не более %1$d файлов</item>-->
+<!--        <item quantity="other">Можно выбрать не более %1$d файлов</item>-->
+<!--    </plurals>-->
+    <string name="error_over_count">最多只能选择 %1$d 个文件</string>
+    <string name="button_apply_default">使用</string>
+    <string name="button_apply">使用(%1$d)</string>
+    <string name="error_over_original_size">"该照片大于 %1$d M，无法上传将取消勾选原图"</string>
+    <string name="error_over_original_count">"有 %1$d 张照片大于 %2$d M\n无法上传，将取消勾选原图"</string>
+
+    <!-- ==================权限申请对话框（alertdialog）================== -->
+    <string name="permission_dialog_title">权限申请</string>
+    <string name="permission_dialog_message">为了您能正常使用，需要以下权限</string>
+
+</resources>

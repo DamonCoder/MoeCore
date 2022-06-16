@@ -1,0 +1,20 @@
+ext {
+    android = [
+            applicationId    : 'ltd.maimeng.sdk',
+            compileSdkVersion: 29,
+            buildToolsVersion: '29.0.3',
+            minSdkVersion    : 19,
+            targetSdkVersion : 29,
+            versionName      : '1.0.0',
+            versionCode      : 1,
+
+            // 接口环境 线下=false 线上=true
+            devEnvironment   : "false",
+            // 日志开关
+            logEnable        : "true",
+            // 混淆&资源压缩开关
+            minifyEnabled    : false,
+            // 是否支持x86
+            supportX86       : false
+    ]
+}

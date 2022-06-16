@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    android:orientation="vertical"
+    android:paddingTop="10dp">
+
+    <ltd.maimeng.core.preview.GalleryViewPager
+        android:id="@+id/gvp_image_preview_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ltd.maimeng.core.ui.widget.StatusBarView
+        android:id="@+id/gvp_image_preview_statusbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/gvp_image_preview_actionbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/actionbar_height"
+        android:textColor="@color/color_FFFFFF"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_below="@id/gvp_image_preview_statusbar"/>
+
+</RelativeLayout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="media.picker.colorPrimary" format="reference|color"/>
+    <attr name="media.picker.toolbar" format="reference"/>
+    <attr name="media.picker.album.dropdown.title.color" format="reference|color"/>
+    <attr name="media.picker.album.dropdown.count.color" format="reference|color"/>
+    <attr name="media.picker.album.element.color" format="reference|color"/>
+    <attr name="media.picker.album.thumbnail.placeholder" format="reference|color"/>
+    <attr name="media.picker.album.emptyView" format="reference"/>
+    <attr name="media.picker.album.emptyView.textColor" format="reference|color"/>
+    <attr name="media.picker.listPopupWindowStyle" format="reference"/>
+    <attr name="media.picker.page.bg" format="reference|color"/>
+    <attr name="media.picker.bottomToolbar.bg" format="reference|color"/>
+    <attr name="media.picker.bottomToolbar.preview.textColor" format="reference|color"/>
+    <attr name="media.picker.bottomToolbar.apply.textColor" format="reference|color"/>
+    <attr name="media.picker.preview.bottomToolbar.back.textColor" format="reference|color"/>
+    <attr name="media.picker.preview.bottomToolbar.apply.textColor" format="reference|color"/>
+    <attr name="media.picker.item.placeholder" format="reference|color"/>
+    <attr name="media.picker.item.checkCircle.backgroundColor" format="reference|color"/>
+    <attr name="media.picker.item.checkCircle.borderColor" format="reference|color"/>
+    <attr name="media.picker.capture.textColor" format="reference|color"/>
+
+</resources>

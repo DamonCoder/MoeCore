@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/status_layout_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ltd.maimeng.core.ui.widget.LoadingView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/status_layout_loading_gif"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/status_layout_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <RelativeLayout
+        android:id="@+id/status_layout_error_net"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/status_error_net_img"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            android:src="@android:drawable/stat_notify_error" />
+
+    </RelativeLayout>
+
+</FrameLayout>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+<!--    <ProgressBar-->
+<!--        android:id="@+id/multi_media_progress"-->
+<!--        style="@style/Universal.Widget.ProgressBar"-->
+<!--        android:layout_width="30dp"-->
+<!--        android:layout_height="30dp"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        android:background="@android:color/transparent" />-->
+
+    <VideoView
+        android:id="@+id/multi_media_video"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:id="@+id/multi_media_video_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/multi_media_video_cover"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="center" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_000000_30"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_video_play" />
+
+    </RelativeLayout>
+
+    <com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/multi_media_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+</RelativeLayout>

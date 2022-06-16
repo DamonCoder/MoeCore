@@ -1,0 +1,178 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+    defaultConfig {
+        applicationId rootProject.ext.android.applicationId
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            if (rootProject.ext.android.supportX86) {
+                abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
+            } else {
+                abiFilters "armeabi-v7a", "arm64-v8a"
+            }
+        }
+
+        multiDexEnabled true
+
+        flavorDimensions "default"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    packagingOptions {
+        exclude 'META-INF/androidx.legacy_legacy-support-core-utils.version'
+    }
+
+    buildTypes {
+
+        debug {
+            String buildType = project.BUILD_TYPE
+            String devEnvironment = project.DEV_ENVIRONMENT
+            System.println(buildType.contains("JENKINS"))
+            System.println(devEnvironment.contains("prod"))
+
+            // 日志开关
+            buildConfigField "boolean", "LOG_ENABLE", "true"
+            // 接口线上线下
+            buildConfigField "boolean", "DEV_ENVIRONMENT", buildType.contains("JENKINS") ? (devEnvironment.contains("prod") ? "true" : "false") : rootProject.ext.android.devEnvironment
+            // 签名文件信息
+            // signingConfig signingConfigs.release
+            // 打开混淆和资源压缩
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            minifyEnabled buildType.contains("JENKINS") ? true : rootProject.ext.android.minifyEnabled
+            shrinkResources buildType.contains("JENKINS") ? true : rootProject.ext.android.minifyEnabled
+        }
+
+        release {
+            // 日志开关
+            buildConfigField "boolean", "LOG_ENABLE", rootProject.ext.android.logEnable
+            // 接口线上线下
+            buildConfigField "boolean", "DEV_ENVIRONMENT", rootProject.ext.android.devEnvironment
+            // 签名文件信息
+            // signingConfig signingConfigs.release
+            // 打开混淆和资源压缩
+            minifyEnabled rootProject.ext.android.minifyEnabled
+            shrinkResources rootProject.ext.android.minifyEnabled
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    // 自定义输出配置
+    android.applicationVariants.all {
+        def buildType = it.buildType.name
+        if (buildType == "release") {
+            // TODO
+            it.getPackageApplication().outputDirectory = new File("/Users/chenzimeng/Desktop/huli_${defaultConfig.versionName}")
+            it.outputs.each {
+                // outputFileName = "juzhen${defaultConfig.versionName}_${variant.productFlavors[0].name}.apk"
+                // outputFileName = "juzhen${defaultConfig.versionName}_${releaseTime()}.apk"
+                it.outputFileName = "huli${releaseTime()}.apk"
+            }
+        } else {
+            if (project.BUILD_TYPE.contains("JENKINS")) {
+                // /root/apache-tomcat-10.0.16/webapps/test
+                // /root/.jenkins/workspace/juzhen/app/build/outputs/apk/debug
+                // http://39.105.149.179:8090/test/juzhen.apk
+                // it.getPackageApplication().outputDirectory = new File("/root/apache-tomcat-10.0.16/webapps/test")
+                it.getPackageApplication().outputDirectory = new File("/usr/local/tomcat/webapps/test")
+                it.outputs.each {
+                    // it.outputFileName = "juzhen_${project.BUILD_TYPE}_${project.DEV_ENVIRONMENT}.apk"
+                    it.outputFileName = "huli.apk"
+                }
+            }
+        }
+    }
+}
+
+def releaseTime() {
+    // return new Date().format("yyyyMMddHHmm", TimeZone.getTimeZone("GMT+08:00"))
+    return new Date().format("yyyyMMdd", TimeZone.getTimeZone("GMT+08:00"))
+}
+
+allprojects {
+    repositories {
+        maven { url 'https://www.jitpack.io' }
+    }
+}
+
+repositories {
+    flatDir {
+        // dirs project(':IMLib').file('libs')
+        dirs 'libs'
+    }
+}
+
+dependencies {
+    api project(path: ':MoeCore')
+    // implementation 'androidx.appcompat:appcompat:1.2.0'
+    // implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    // implementation 'com.google.android.material:material:1.2.1'
+    // implementation 'com.google.android.material:material:1.2.1'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    // api project(':IMLib')
+    // api project(':IMKit')
+    implementation fileTree(dir: "libs", include: ["*.jar", "*.aar"])
+    // 友盟统计和Crash抓取SDK
+    // implementation 'com.umeng.umsdk:common:9.4.2'
+    // implementation 'com.umeng.umsdk:asms:1.4.1'
+    // implementation 'com.umeng.umsdk:apm:1.4.2'
+    // LinkMe一键登录
+    // implementation(name: 'linkaccount-v1.0.22', ext: 'aar')
+    // 支付宝SDK
+    // implementation(name: 'alipaySdk-15.5.7-20181023110917', ext: 'aar')
+    // 美团打包
+    implementation 'com.mcxiaoke.packer-ng:helper:2.0.1'
+    // 腾讯Bugly
+    // implementation 'com.tencent.bugly:crashreport:latest.release'
+    // 声网-互动直播-音频
+    // implementation 'com.github.agorabuilder:native-voice-sdk:3.6.2'
+    // MagicIndicator for androidx
+    implementation 'com.github.hackware1993:MagicIndicator:1.7.0'
+    // 骨架屏
+    // implementation 'com.ethanhua:skeleton:1.1.2'
+    // implementation 'io.supercharge:shimmerlayout:2.1.0'
+    // 垂直导航和垂直ViewPager
+    // implementation 'q.rorbin:VerticalTabLayout:1.2.5'
+    // implementation 'cn.youngkaaa:yviewpager:0.4'
+    // implementation "com.google.android.material:material:1.0.0"
+    // implementation 'com.gavin.view.flexible:library:1.0.2'
+    // 图片锚点地图
+    // implementation 'com.github.OCNYang:AnchorImageViewDemo:v1.3'
+    // 添加阿里https+dns解析版本
+    // implementation 'cn.yc:WebViewLib:1.4.0'
+    // markdown
+    // implementation 'ru.noties:markwon:1.0.1'
+    // implementation 'ru.noties:markwon-image-loader:1.0.1'// optional
+    // implementation 'ru.noties:markwon-view:1.0.1'// optional
+    // implementation 'io.noties.markwon:core:4.6.2'// 引入核心库
+    // implementation 'io.noties.markwon:image:4.6.2'// 引入图库支持库
+    // implementation 'org.commonjava.googlecode.markdown4j:markdown4j:2.2-cj-1.1'
+    // implementation 'us.feras.mdv:markdownview:1.1.0'
+
+    // LeakCanary
+    // debugCompile 'com.squareup.leakcanary:leakcanary-android:1.6.1'
+    // releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.1'
+
+    // 悬浮窗
+    // implementation 'com.github.Doonkey:DkFloatingView:1.0.2'
+    // implementation 'com.imuxuan:floatingview:1.6'
+}

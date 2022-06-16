@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  Copyright 2017 Zhihu Inc.
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+  -->
+<resources>
+
+    <style name="MediaPicker.Tea" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="media.picker.colorPrimary">@color/media_picker_primary</item>
+        <item name="media.picker.toolbar">@style/MediaPicker.Tea.Toolbar</item>
+        <item name="media.picker.album.dropdown.title.color">
+            @color/media_picker_album_dropdown_title_text
+        </item>
+        <item name="media.picker.album.dropdown.count.color">
+            @color/media_picker_album_dropdown_count_text
+        </item>
+        <item name="media.picker.album.element.color">@color/color_333333</item>
+        <item name="media.picker.album.thumbnail.placeholder">
+            @color/media_picker_album_dropdown_thumbnail_placeholder
+        </item>
+        <item name="media.picker.album.emptyView">@drawable/ic_empty</item>
+        <item name="media.picker.album.emptyView.textColor">@color/media_picker_album_empty_view
+        </item>
+        <item name="media.picker.item.placeholder">@color/media_picker_item_placeholder</item>
+        <item name="media.picker.item.checkCircle.backgroundColor">
+            @color/media_picker_item_checkCircle_backgroundColor
+        </item>
+        <item name="media.picker.item.checkCircle.borderColor">
+            @color/media_picker_item_checkCircle_borderColor
+        </item>
+        <item name="media.picker.page.bg">@color/media_picker_page_bg</item>
+        <item name="media.picker.bottomToolbar.bg">@color/media_picker_bottom_toolbar_bg</item>
+        <item name="media.picker.bottomToolbar.preview.textColor">
+            @color/media_picker_bottom_toolbar_preview
+        </item>
+        <item name="media.picker.bottomToolbar.apply.textColor">
+            @color/media_picker_bottom_toolbar_apply
+        </item>
+        <item name="media.picker.preview.bottomToolbar.back.textColor">
+            @color/media_picker_preview_bottom_toolbar_back_text
+        </item>
+        <item name="media.picker.preview.bottomToolbar.apply.textColor">
+            @color/media_picker_preview_bottom_toolbar_apply
+        </item>
+        <item name="listPopupWindowStyle">@style/MediaPicker.Tea.Popup</item>
+        <item name="media.picker.capture.textColor">@color/media_picker_capture</item>
+    </style>
+
+    <style name="MediaPicker.Tea.Toolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar"></style>
+
+    <style name="MediaPicker.Tea.Popup" parent="Widget.AppCompat.Light.ListPopupWindow">
+        <item name="android:popupBackground">@color/media_picker_album_popup_bg</item>
+    </style>
+
+    <declare-styleable name="CircleImageView">
+        <attr name="civ_border_width" format="dimension" />
+        <attr name="civ_border_color" format="color" />
+        <attr name="civ_border_overlay" format="boolean" />
+        <attr name="civ_fill_color" format="color" />
+        <attr name="civ_circle_background_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="RoundedImageView">
+        <attr name="riv_border_width" format="dimension" />
+        <attr name="riv_border_color" format="color" />
+        <attr name="riv_border_radius" format="dimension" />
+        <attr name="riv_drawable_radius" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="MutlColorLoadingView">
+        <!--The color of the first progress-->
+        <attr name="mclv_first_color" format="color" />
+        <!--The color of the second progress-->
+        <attr name="mclv_second_color" format="color" />
+        <!--The color of the three progress-->
+        <attr name="mclv_three_color" format="color" />
+        <!--A round of time-->
+        <attr name="mclv_duration" format="integer" />
+        <!--Angle of progress-->
+        <attr name="mclv_start_angle" format="integer" />
+        <!--The thickness of the progress bar-->
+        <attr name="mclv_stroke_width" format="integer|dimension" />
+        <!--The ratio of the first color progress to the total progress-->
+        <attr name="mclv_rate_first_round" format="float" />
+    </declare-styleable>
+
+    <declare-styleable name="UniversalMediaController">
+        <attr name="scalable" format="boolean" />
+        <attr name="showMidPlayBtn" format="boolean" />
+    </declare-styleable>
+
+    <style name="Universal.Widget.ProgressBar" parent="@android:style/Widget.ProgressBar">
+        <item name="android:indeterminateDrawable">@drawable/view_progress_rotate</item>
+        <item name="android:indeterminateDuration">1000</item>
+    </style>
+
+    <declare-styleable name="UniversalVideoView">
+        <attr name="fitXY" format="boolean" />
+        <attr name="autoRotation" format="boolean" />
+    </declare-styleable>
+
+    <!-- ==================权限申请对话框（alertdialog）================== -->
+    <style name="style_permission_dialog">
+        <!-- Dialog的windowFrame框为无 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- 是否显示title -->
+        <item name="android:windowNoTitle">false</item>
+        <!-- 是否浮现在activity之上 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 半透明 -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- 设置dialog的背景：#00000000透明色 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!-- 背景变灰：整个屏幕变灰，配合setCanceledOnTouchOutside(false) -->
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <!--比例布局-->
+    <declare-styleable name="RatioLayout">
+        <attr name="ratioWidth" format="integer" />
+        <attr name="ratioHeight" format="integer" />
+    </declare-styleable>
+
+    <!--圆角布局-->
+    <declare-styleable name="RoundLayoutAttr">
+        <!--圆角弧度-->
+        <attr name="round_corner" format="integer|dimension" />
+        <!--边框颜色-->
+        <attr name="stroke_color" format="color|reference" />
+        <!--边框宽度-->
+        <attr name="stroke_width" format="integer|dimension" />
+    </declare-styleable>
+
+</resources>

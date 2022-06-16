@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ltd.maimeng.core.ui.status.StatusLayout
+        android:id="@+id/fragment_status_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ltd.maimeng.core.ui.widget.MutlColorLoadingView
+        android:id="@+id/fragment_loading"
+        android:layout_width="120dp"
+        android:layout_height="105dp"
+        android:padding="28dp"
+        android:background="@drawable/shape_loadding_bg"
+        app:mclv_duration="2000"
+        app:mclv_first_color="@color/color_EE4949"
+        app:mclv_second_color="@color/color_F88B40"
+        app:mclv_three_color="@color/color_4BBBFF"
+        app:mclv_stroke_width="4dp"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
+
+</LinearLayout>
