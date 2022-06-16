@@ -59,7 +59,8 @@ dependencies {
     // 吐司
     api 'com.hjq:toast:6.0'
     // 阿里云OSS
-    api 'com.aliyun.dpa:oss-android-sdk:+'
+    // api 'com.aliyun.dpa:oss-android-sdk:+'
+    api 'com.aliyun.dpa:oss-android-sdk:2.9.11'
     // 微信SDK（微信分享+微信支付）
     // api 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
     api 'com.tencent.mm.opensdk:wechat-sdk-android:+'
