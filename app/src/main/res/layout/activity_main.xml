@@ -4,6 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <ltd.maimeng.core.ui.widget.StatusBarView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <Button
         android:id="@+id/btn_background_blur"
         android:layout_width="match_parent"
@@ -11,16 +15,22 @@
         android:text="背景模糊" />
 
     <Button
-        android:id="@+id/btn_singleinstance_activity"
+        android:id="@+id/btn_live_room"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:text="SingleInstanceActivity" />
+        android:text="互动直播" />
 
     <Button
         android:id="@+id/btn_screen_adaption"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:text="屏幕适配" />
+
+    <Button
+        android:id="@+id/btn_loadding"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="Loadding" />
 
 
 </LinearLayout>

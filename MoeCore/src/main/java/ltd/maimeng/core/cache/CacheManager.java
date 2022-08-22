@@ -3,7 +3,7 @@ package ltd.maimeng.core.cache;
 import android.content.Context;
 import android.os.Environment;
 
-import ltd.maimeng.core.log.TeaLog;
+import ltd.maimeng.core.log.MoeLog;
 import ltd.maimeng.core.utils.TextUtil;
 
 import org.xml.sax.SAXException;
@@ -42,9 +42,9 @@ public class CacheManager {
             File file = new File(Environment.getExternalStorageDirectory(), suffix);
             if (file.exists() && !file.isDirectory()) {
                 boolean deleteSuccess = file.delete();
-                TeaLog.i("Coder", "删除" + (deleteSuccess ? "成功" : "失败"));
+                MoeLog.i("Coder", "删除" + (deleteSuccess ? "成功" : "失败"));
             } else {
-                TeaLog.i("Coder", "不删除");
+                MoeLog.i("Coder", "不删除");
             }
         }
 
@@ -84,7 +84,7 @@ public class CacheManager {
     }
 
     public void print() {
-        TeaLog.i(ltd.maimeng.core.cache.CacheStorage.getInstance().toString());
+        MoeLog.i(ltd.maimeng.core.cache.CacheStorage.getInstance().toString());
     }
 
     /**

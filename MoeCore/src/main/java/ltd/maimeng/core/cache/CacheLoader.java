@@ -16,11 +16,11 @@ import javax.xml.parsers.SAXParserFactory;
 public class CacheLoader {
 
     public synchronized static void loadAllCacheDirs(Context context) throws IOException, ParserConfigurationException, SAXException {
-        ltd.maimeng.core.cache.CacheStorage.getInstance().clear();
+        CacheStorage.getInstance().clear();
         SAXParserFactory factory = SAXParserFactory.newInstance();
         SAXParser parser = factory.newSAXParser();
         ParserHandler parserHandler = new ParserHandler();
-        InputStream inputStream = context.getAssets().open("tea_cache.xml");
+        InputStream inputStream = context.getAssets().open("moe_cache.xml");
         parser.parse(inputStream, parserHandler);
         inputStream.close();
     }
@@ -55,7 +55,7 @@ public class CacheLoader {
                 cacheDir.setRelativePath(dir);
 
                 try {
-                    ltd.maimeng.core.cache.CacheManager.getInstance().checkCacheDir(cacheDir);
+                    CacheManager.getInstance().checkCacheDir(cacheDir);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

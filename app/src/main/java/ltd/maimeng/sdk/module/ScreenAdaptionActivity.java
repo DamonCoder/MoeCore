@@ -1,8 +1,9 @@
-package ltd.maimeng.sdk;
+package ltd.maimeng.sdk.module;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import ltd.maimeng.sdk.R;
 
 public class ScreenAdaptionActivity extends AppCompatActivity {
 

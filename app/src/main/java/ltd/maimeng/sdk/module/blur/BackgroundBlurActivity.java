@@ -1,4 +1,4 @@
-package ltd.maimeng.sdk;
+package ltd.maimeng.sdk.module.blur;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -25,6 +25,7 @@ import com.bumptech.glide.request.target.Target;
 import ltd.maimeng.core.ui.BaseActivity;
 
 import androidx.annotation.Nullable;
+import ltd.maimeng.sdk.R;
 
 public class BackgroundBlurActivity extends BaseActivity {
 

@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 
 import ltd.maimeng.core.exception.MoeCommonException;
-import ltd.maimeng.core.log.TeaLog;
+import ltd.maimeng.core.log.MoeLog;
 import ltd.maimeng.core.network.lifecycle.Lifecycle;
 import ltd.maimeng.core.ui.BaseActivity;
 import ltd.maimeng.core.ui.BaseFragment;
@@ -107,7 +107,7 @@ public class MoeRequest<T extends MoeRequest> extends MoeBaseRequest implements 
         @Override
         public void onLifecycleChange(int status) {
             if (status == Lifecycle.STATUS_DESTROY) {
-                TeaLog.i("载体已销毁!");
+                MoeLog.i("载体已销毁!");
                 // MoeHttp.cancelRequest(tag);
             }
         }
@@ -438,8 +438,8 @@ public class MoeRequest<T extends MoeRequest> extends MoeBaseRequest implements 
      */
     private void excuteRequest(final BaseRequest request, final MoeRequest moeRequest) {
         buildParams(request, moeRequest);
-        TeaLog.i("Coder", "Http.url=" + request.getUrl());
-        TeaLog.i("Coder", moeRequest.toString());
+        MoeLog.i("Coder", "Http.url=" + request.getUrl());
+        MoeLog.i("Coder", moeRequest.toString());
         request.execute(new StringCallback() {
 
             @Override
@@ -652,7 +652,7 @@ public class MoeRequest<T extends MoeRequest> extends MoeBaseRequest implements 
     public boolean canCallProxy() {
         if (this.proxy == null) {
             // 如果代理为空，则不允许调用
-            TeaLog.e("Tag为" + tag + "的请求proxy = null , 不予回调!");
+            MoeLog.e("Tag为" + tag + "的请求proxy = null , 不予回调!");
             return false;
         }
 
@@ -662,20 +662,20 @@ public class MoeRequest<T extends MoeRequest> extends MoeBaseRequest implements 
 
         if (isOnBackgroundThread()) {
             // 如果当前线程不是主线程，则不允许调用
-            TeaLog.e("Tag为" + tag + "的请求回调未运行在主线程 , 不予回调!");
+            MoeLog.e("Tag为" + tag + "的请求回调未运行在主线程 , 不予回调!");
             return false;
         }
 
 
         if (lifecycle != null && lifecycle.getStatus() == Lifecycle.STATUS_DESTROY) {
             // 如果代理为空，则不允许调用
-            TeaLog.e("Tag为" + tag + "的请求载体生命周期已结束, 不予回调!");
+            MoeLog.e("Tag为" + tag + "的请求载体生命周期已结束, 不予回调!");
             return false;
         }
 
         boolean result = isActivityOk(activity) || isFragmentOk(fragment) || isContextOk(context);
         if (!result) {
-            TeaLog.i("Tag为" + tag + "的请求 canCallProxy 判定结果为 " + result + "无法回调！");
+            MoeLog.i("Tag为" + tag + "的请求 canCallProxy 判定结果为 " + result + "无法回调！");
         }
         return result;
     }

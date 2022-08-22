@@ -3,7 +3,7 @@ package ltd.maimeng.core.network;
 import ltd.maimeng.core.Moe;
 import ltd.maimeng.core.exception.MoeCommonException;
 import ltd.maimeng.core.exception.MoeRuntimeException;
-import ltd.maimeng.core.log.TeaLog;
+import ltd.maimeng.core.log.MoeLog;
 import ltd.maimeng.core.utils.NetworkUtil;
 import ltd.maimeng.core.utils.TextUtil;
 
@@ -23,7 +23,7 @@ public class MoeRequestChecker {
     public static boolean check(MoeRequest request) throws MoeCommonException {
 
         if (!NetworkUtil.isNetConnected(Moe.getInstance().getApplication())) {
-            TeaLog.e("Tag为 " + request.getTag() + " 的请求网络不可用!");
+            MoeLog.e("Tag为 " + request.getTag() + " 的请求网络不可用!");
             request.onError(ErrorCode.NET_ERROR, "网络不可用");
             request.afterResponse();
             return false;
@@ -38,12 +38,12 @@ public class MoeRequestChecker {
         }
 
         if (TextUtil.isEmpty(request.getRequestDesc())) {
-            TeaLog.e("Tag为 " + request.getTag() + " 的请求没有设置文字描述，这可能不利于进行数据调试!");
+            MoeLog.e("Tag为 " + request.getTag() + " 的请求没有设置文字描述，这可能不利于进行数据调试!");
         }
 
         if (!request.isNoHost()) {
             if (request.getActivity() == null && request.getFragment() == null && request.getAppContext() == null) {
-                TeaLog.e("请求被废弃： Tag为 " + request.getTag() + " 的请求未关联任何Activity、Fragment或Context载体，" + "在请求完毕刷新UI时，可能会导致程序崩溃!");
+                MoeLog.e("请求被废弃： Tag为 " + request.getTag() + " 的请求未关联任何Activity、Fragment或Context载体，" + "在请求完毕刷新UI时，可能会导致程序崩溃!");
                 request.afterResponse();
                 return false;
             }

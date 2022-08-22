@@ -2,7 +2,7 @@ package ltd.maimeng.core.route;
 
 import android.content.Intent;
 
-import ltd.maimeng.core.log.TeaLog;
+import ltd.maimeng.core.log.MoeLog;
 import ltd.maimeng.core.utils.TextUtil;
 
 import org.apache.commons.lang3.math.NumberUtils;
@@ -127,9 +127,9 @@ public class IntentValueCompat {
      * @return
      */
     public static long getLong(@NonNull String key, @NonNull Intent intent, long defaultValue) {
-        TeaLog.i(TAG, "defaultValue = " + defaultValue);
+        MoeLog.i(TAG, "defaultValue = " + defaultValue);
         String SResult = intent.getStringExtra(key);
-        TeaLog.i(TAG, "SResult = " + SResult);
+        MoeLog.i(TAG, "SResult = " + SResult);
         if (!TextUtil.isEmpty(SResult)) {
             if (NumberUtils.isDigits(SResult)) {
                 //首先所有的字符必须是数字，小数都不行，必须纯数字
@@ -141,24 +141,24 @@ public class IntentValueCompat {
         }
 
         int IResult = intent.getIntExtra(key, Integer.MIN_VALUE);
-        TeaLog.i(TAG, "IResult = " + IResult);
+        MoeLog.i(TAG, "IResult = " + IResult);
         if (IResult != Integer.MIN_VALUE) {
             return IResult;
         }
 
         long LResult = intent.getLongExtra(key, Long.MIN_VALUE);
-        TeaLog.i(TAG, "LResult = " + LResult);
+        MoeLog.i(TAG, "LResult = " + LResult);
         if (LResult != Long.MIN_VALUE) {
             return LResult;
         }
 
         double DResult = intent.getDoubleExtra(key, Double.MIN_VALUE);
-        TeaLog.i(TAG, "DResult = " + DResult);
+        MoeLog.i(TAG, "DResult = " + DResult);
         if (DResult != Double.MIN_VALUE) {
             return (long) DResult;
         }
 
-        TeaLog.i(TAG, "return defaultValue = " + defaultValue);
+        MoeLog.i(TAG, "return defaultValue = " + defaultValue);
 
         return defaultValue;
     }

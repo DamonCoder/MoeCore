@@ -32,7 +32,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
 import ltd.maimeng.core.MoeApplication;
-import ltd.maimeng.core.log.TeaLog;
+import ltd.maimeng.core.log.MoeLog;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -61,7 +61,7 @@ public class SystemUtils {
 
     public static void printStackTrace() {
         for (StackTraceElement element : new Throwable().getStackTrace()) {
-            TeaLog.i(TAG, element.toString());
+            MoeLog.i(TAG, element.toString());
         }
     }
 
@@ -146,11 +146,11 @@ public class SystemUtils {
             // 获得本机的MAC地址
             String localMac = wifiInfo.getMacAddress();
             // netName:HUAWEI MediaPad
-            TeaLog.i(TAG, "netName:" + netName);
+            MoeLog.i(TAG, "netName:" + netName);
             // netMac:78:f5:fd:ae:b9:97
-            TeaLog.i(TAG, "netMac:" + netMac);
+            MoeLog.i(TAG, "netMac:" + netMac);
             // localMac:BC:76:70:9F:56:BD
-            TeaLog.i(TAG, "localMac:" + localMac);
+            MoeLog.i(TAG, "localMac:" + localMac);
         }
     }
 
@@ -945,7 +945,7 @@ public class SystemUtils {
                         new String[]{filePath}, null,
                         new MediaScannerConnection.OnScanCompletedListener() {
                             public void onScanCompleted(String path, Uri uri) {
-                                TeaLog.i(TAG, "onScanCompleted-->" + path);
+                                MoeLog.i(TAG, "onScanCompleted-->" + path);
                             }
                         });
             }

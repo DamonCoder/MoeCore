@@ -6,7 +6,7 @@ import com.orhanobut.logger.Logger;
 import ltd.maimeng.core.Moe;
 
 
-public class TeaLog {
+public class MoeLog {
 
     public static final String TAG = "Moe";
 
@@ -135,7 +135,7 @@ public class TeaLog {
             if (stackTraceElement.getClassName().equals(Thread.class.getName())) {
                 continue;
             }
-            if (stackTraceElement.getClassName().equals(TeaLog.class.getName())) {
+            if (stackTraceElement.getClassName().equals(MoeLog.class.getName())) {
                 continue;
             }
             return "[" + Thread.currentThread().getName() + ":("

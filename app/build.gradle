@@ -121,28 +121,15 @@ repositories {
 
 dependencies {
     api project(path: ':MoeCore')
-    // implementation 'androidx.appcompat:appcompat:1.2.0'
-    // implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    // implementation 'com.google.android.material:material:1.2.1'
-    // implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    // api project(':IMLib')
-    // api project(':IMKit')
     implementation fileTree(dir: "libs", include: ["*.jar", "*.aar"])
-    // 友盟统计和Crash抓取SDK
-    // implementation 'com.umeng.umsdk:common:9.4.2'
-    // implementation 'com.umeng.umsdk:asms:1.4.1'
-    // implementation 'com.umeng.umsdk:apm:1.4.2'
-    // LinkMe一键登录
-    // implementation(name: 'linkaccount-v1.0.22', ext: 'aar')
-    // 支付宝SDK
-    // implementation(name: 'alipaySdk-15.5.7-20181023110917', ext: 'aar')
     // 美团打包
-    implementation 'com.mcxiaoke.packer-ng:helper:2.0.1'
-    // 腾讯Bugly
-    // implementation 'com.tencent.bugly:crashreport:latest.release'
+    // implementation 'com.mcxiaoke.packer-ng:helper:2.0.1'
     // 声网-互动直播-音频
     // implementation 'com.github.agorabuilder:native-voice-sdk:3.6.2'
     // MagicIndicator for androidx
@@ -167,10 +154,6 @@ dependencies {
     // implementation 'io.noties.markwon:image:4.6.2'// 引入图库支持库
     // implementation 'org.commonjava.googlecode.markdown4j:markdown4j:2.2-cj-1.1'
     // implementation 'us.feras.mdv:markdownview:1.1.0'
-
-    // LeakCanary
-    // debugCompile 'com.squareup.leakcanary:leakcanary-android:1.6.1'
-    // releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.1'
 
     // 悬浮窗
     // implementation 'com.github.Doonkey:DkFloatingView:1.0.2'

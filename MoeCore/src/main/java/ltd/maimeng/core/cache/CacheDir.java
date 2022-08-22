@@ -15,14 +15,17 @@ public class CacheDir {
      * 缓存文件夹描述
      */
     private String desc;
+
     /**
      * 缓存文件夹相对路径
      */
     private String relativePath;
+
     /**
      * 缓存文件夹绝对路径
      */
     private String absolutePath;
+
     /**
      * 缓存文件夹特性，如临时文件、媒体文件等
      */

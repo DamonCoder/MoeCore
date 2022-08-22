@@ -13,11 +13,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import ltd.maimeng.core.R;
-import ltd.maimeng.core.ui.permission.PermissionActivity;
-import ltd.maimeng.core.utils.TextUtil;
 
 import androidx.annotation.Nullable;
+import ltd.maimeng.core.R;
+import ltd.maimeng.core.ui.permission.PermissionActivity;
 
 /**
  * <pre>
@@ -34,6 +33,7 @@ public abstract class StatusActivity extends PermissionActivity implements Statu
     private LinearLayout loadingLayoutContent;
     private ImageView loadingLayoutContentGif;
     private TextView loadingLayoutContentTxt;
+    private LoadingDialog loadingDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -65,6 +65,8 @@ public abstract class StatusActivity extends PermissionActivity implements Statu
         loadingLayoutContentGif = findViewById(R.id.activity_loading_content_gif);
         loadingLayoutContentTxt = findViewById(R.id.activity_loading_content_txt);
         Glide.with(StatusActivity.this).load(R.drawable.ic_loading).into(loadingLayoutContentGif);
+
+        loadingDialog = new LoadingDialog(StatusActivity.this, R.style.LoadingDialog);
     }
 
     public boolean lightStatusBar() {
@@ -94,23 +96,30 @@ public abstract class StatusActivity extends PermissionActivity implements Statu
     }
 
     protected void showLoadding(String loaddingDesc) {
-        if (loadingLayout.getVisibility() == View.GONE) {
-            loadingLayout.setVisibility(View.VISIBLE);
-        }
-        if (TextUtil.isEmpty(loaddingDesc)) {
-            // loadingLayoutContent.setBackground(null);
-            loadingLayoutContent.setBackgroundResource(R.drawable.shape_loadding_bg);
-            loadingLayoutContentTxt.setVisibility(View.GONE);
-        } else {
-            loadingLayoutContent.setBackgroundResource(R.drawable.shape_loadding_bg);
-            loadingLayoutContentTxt.setText(loaddingDesc);
-            loadingLayoutContentTxt.setVisibility(View.VISIBLE);
+        // if (loadingLayout.getVisibility() == View.GONE) {
+        //     loadingLayout.setVisibility(View.VISIBLE);
+        // }
+        // if (TextUtil.isEmpty(loaddingDesc)) {
+        //     // loadingLayoutContent.setBackground(null);
+        //     loadingLayoutContent.setBackgroundResource(R.drawable.shape_loadding_bg);
+        //     loadingLayoutContentTxt.setVisibility(View.GONE);
+        // } else {
+        //     loadingLayoutContent.setBackgroundResource(R.drawable.shape_loadding_bg);
+        //     loadingLayoutContentTxt.setText(loaddingDesc);
+        //     loadingLayoutContentTxt.setVisibility(View.VISIBLE);
+        // }
+        if (loadingDialog != null && !loadingDialog.isShowing()) {
+            loadingDialog.show();
+            loadingDialog.setLoadingDesc(loaddingDesc);
         }
     }
 
     public void hideLoadding() {
-        if (loadingLayout.getVisibility() == View.VISIBLE) {
-            loadingLayout.setVisibility(View.GONE);
+        // if (loadingLayout.getVisibility() == View.VISIBLE) {
+        //     loadingLayout.setVisibility(View.GONE);
+        // }
+        if (loadingDialog != null && loadingDialog.isShowing()) {
+            loadingDialog.dismiss();
         }
     }
 
